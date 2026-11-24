@@ -17,4 +17,5 @@ Open a terminal in this folder and run `python3 -m http.server 8080`, then visit
 - `index.html`, `style.css`, `game.js` – the game
 - `data/world.json` – map + country info (Natural Earth via world-atlas, countries-list)
 - `vendor/` – d3 and topojson-client
+- `fonts/` – Fredoka (SIL Open Font License)
 - `tools/build-data.mjs` – regenerates `data/world.json` (`npm install && npm run build-data`)
