@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GeoGame">
+<meta name="theme-color" content="#1b6fa8">
+<title>Tom's GeoGame</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <button id="menuBtn" class="ghost hidden" aria-label="Back to menu">&larr; Menu</button>
+    <h1 id="title">Tom's GeoGame</h1>
+    <div id="stats" class="hidden">
+      <span id="progress">1/10</span>
+      <span id="score">0 pts</span>
+      <span id="streak" title="Streak"></span>
+    </div>
+  </header>
+
+  <main id="mapWrap">
+    <svg id="map" role="img" aria-label="World map"></svg>
+    <div id="zoomCtl">
+      <button id="zoomIn" aria-label="Zoom in">+</button>
+      <button id="zoomOut" aria-label="Zoom out">&minus;</button>
+      <button id="zoomReset" aria-label="Reset zoom">&#8634;</button>
+    </div>
+    <div id="toast" class="hidden"></div>
+  </main>
+
+  <section id="prompt" class="hidden">
+    <div id="question"></div>
+    <div id="choices"></div>
+    <div id="feedback"></div>
+    <button id="nextBtn" class="primary hidden">Next &rarr;</button>
+  </section>
+
+  <section id="menu" class="overlay">
+    <div class="card">
+      <h2>Pick a game</h2>
+      <div class="group" id="modeGroup">
+        <button data-mode="find" class="opt selected"><b>Find it</b><small>Tap the country on the map</small></button>
+        <button data-mode="name" class="opt"><b>Name it</b><small>Which country is lit up?</small></button>
+        <button data-mode="capital" class="opt"><b>Capitals</b><small>Pick the capital city</small></button>
+      </div>
+      <h2>Pick a region</h2>
+      <div class="group regions" id="regionGroup"></div>
+      <button id="startBtn" class="primary big">Play!</button>
+      <p class="hint">Pinch or scroll to zoom, drag to move the map.</p>
+    </div>
+  </section>
+
+  <section id="results" class="overlay hidden">
+    <div class="card">
+      <h2 id="resultTitle"></h2>
+      <div id="stars"></div>
+      <p id="resultScore"></p>
+      <p id="resultBest"></p>
+      <div id="missed"></div>
+      <div class="row">
+        <button id="againBtn" class="primary">Play again</button>
+        <button id="toMenuBtn">Menu</button>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="vendor/d3.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
