@@ -32,13 +32,13 @@ function taps(svg, path, feats, opts) {
 }
 Promise.all([fetch('data/na.json').then(r => r.json()), fetch('data/land.json').then(r => r.json())]).then(([na, land]) => {
   const C = topojson.feature(na, na.objects.countries).features;
-  const byName = n => C.find(f => f.properties.name === n);
+  const lf = topojson.feature(land, land.objects.land);
+  const under = (svg, path) => svg.append('path').attr('class', 'cty').attr('d', path(lf));
   const carib = [[-86, 9.5], [-59, 27]];
 
   // world voyage chart
   { const proj = fitBox(-10, [[-170, -50], [180, 75]], [[30, 90], [W - 30, H - 30]]);
     const {svg, path} = base('#m-world', proj);
-    const lf = topojson.feature(land, land.objects.land);
     svg.append('path').attr('class', 'coast').attr('d', path(lf));
     svg.append('path').attr('d', path(lf)).attr('fill', '#24503f').attr('stroke', '#7fb59a').attr('stroke-width', .8);
     const route = [[-100, 45], [-60, -15], [20, 5], [15, 50], [90, 35], [135, -25]].map(p => proj(p));
@@ -47,7 +47,7 @@ Promise.all([fetch('data/na.json').then(r => r.json()), fetch('data/land.json').
   }
   // learn: caribbean
   const caribMap = (sel, state, label, ext = [[20, 80], [W - 20, H - 150]]) => {
-    const proj = fitBox(73, carib, ext); const {svg, path} = base(sel, proj);
+    const proj = fitBox(73, carib, ext); const {svg, path} = base(sel, proj); under(svg, path);
     drawCountries(svg, path, C, f => L2.includes(f.properties.name) ? (state(f) || 'on') : '');
     taps(svg, path, C.filter(f => L2.includes(f.properties.name)), {state, label, dx: f => ({'Saint Lucia': -50, 'Barbados': 0, 'Grenada': -34, 'Haiti': -22, 'Dominican Republic': 34, 'Grenada': 44, 'Dominica': 54, 'Antigua and Barbuda': 0, 'Saint Kitts and Nevis': -72, 'Saint Vincent and the Grenadines': -86, 'Trinidad and Tobago': 0})[f.properties.name] || 0,
       dy: f => ({'Haiti': 4, 'Dominican Republic': 4, 'Saint Lucia': -8, 'Antigua and Barbuda': -24, 'Barbados': 34, 'Grenada': 26, 'Dominica': 4, 'Saint Kitts and Nevis': 4, 'Saint Vincent and the Grenadines': 16, 'Trinidad and Tobago': 36, 'Bahamas': 4})[f.properties.name] ?? 4});
@@ -58,13 +58,13 @@ Promise.all([fetch('data/na.json').then(r => r.json()), fetch('data/land.json').
   caribMap('#m-chal', f => '', () => null);
 
   // capitals: tap the country whose capital is Ottawa
-  { const proj = fitBox(95, [[-130, 15], [-60, 62]], [[170, 100], [460, 294]]); const {svg, path} = base('#m-cap', proj, [470, 300]);
+  { const proj = fitBox(95, [[-130, 15], [-60, 62]], [[170, 100], [460, 294]]); const {svg, path} = base('#m-cap', proj, [470, 300]); under(svg, path);
     drawCountries(svg, path, C, f => L1.includes(f.properties.name) ? (f.properties.name === 'Canada' ? 'ok' : 'on') : '');
     const o = proj([-75.7, 45.4]); svg.append('circle').attr('cx', o[0]).attr('cy', o[1]).attr('r', 5).attr('fill', '#fff').attr('stroke', '#04121f').attr('stroke-width', 2);
     svg.append('text').attr('class', 'lbl').attr('x', o[0] + 8).attr('y', o[1] - 8).text('Ottawa');
   }
   // physical
-  { const proj = fitBox(100, [[-150, 10], [-55, 70]], [[10, 70], [700, H - 130]]); const {svg, path} = base('#m-phys', proj);
+  { const proj = fitBox(100, [[-150, 10], [-55, 70]], [[10, 70], [700, H - 130]]); const {svg, path} = base('#m-phys', proj); under(svg, path);
     drawCountries(svg, path, C, f => L1.includes(f.properties.name) ? 'on' : '');
     const R = topojson.feature(na, na.objects.ranges).features, Lk = topojson.feature(na, na.objects.lakes).features, Rv = topojson.feature(na, na.objects.rivers).features;
     svg.append('g').selectAll('path').data(R).join('path').attr('d', path).attr('class', f => /PLAINS|DESERT|PEN|FLORIDA/.test(f.properties.name) ? 'plain' : 'range');
