@@ -17,6 +17,7 @@ let S = load();
 function blank() { return {v: 1, player: '', prog: {}, missed: {}, shown: {}, inProgress: null}; }
 function load() { try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.v === 1) return Object.assign(blank(), s); } catch {} return blank(); }
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
+addEventListener('storage', e => { if (e.key !== KEY) return; S = load(); if (current === 'hub') renderHub(); if (current === 'chart') renderChart(); });
 const prog = id => S.prog[id] || (S.prog[id] = {tests: [], passes: 0, best: null, won: false});
 const peek = id => S.prog[id] || {tests: [], passes: 0, best: null, won: false};
 
