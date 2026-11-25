@@ -376,7 +376,7 @@ function restyleMap() {
     const base = this.tagName === 'circle' ? 'tap' : this.classList.contains('feat') ? 'feat' : 'cty' + (P.layer.items.includes(k) && P.layer.map !== 'phys' ? ' on' : '');
     this.setAttribute('class', base + (m ? ' ' + m : ''));
   });
-  const labs = P.mode === 'learn' && P.showNames ? P.layer.items : Object.keys(marks).filter(k => ITEMS[k] && marks[k] !== '');
+  const labs = P.mode === 'learn' && P.showNames ? P.layer.items : P.mode !== 'learn' && !P.answered ? [] : Object.keys(marks).filter(k => ITEMS[k] && marks[k] !== '');
   pm.labels.selectAll('text').data(labs.filter(k => ITEMS[k]), k => k).join('text').attr('class', 'lbl')
     .attr('x', k => labelPoint(k)[0]).attr('y', k => labelPoint(k)[1] - 18 / pm.k * (pm.g.select(`circle[data-k="${k}"]`).empty() ? 0 : 1)).text(k => ITEMS[k].name);
   scaleMarks();
