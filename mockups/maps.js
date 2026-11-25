@@ -47,7 +47,7 @@ Promise.all([fetch('data/na.json').then(r => r.json()), fetch('data/land.json').
   }
   // learn: caribbean
   const caribMap = (sel, state, label, ext = [[20, 80], [W - 20, H - 150]]) => {
-    const proj = fitBox(73, carib, ext); const {svg, path} = base(sel, proj); under(svg, path);
+    const proj = fitBox(73, carib, ext); const {svg, path} = base(sel, proj);
     drawCountries(svg, path, C, f => L2.includes(f.properties.name) ? (state(f) || 'on') : '');
     taps(svg, path, C.filter(f => L2.includes(f.properties.name)), {state, label, dx: f => ({'Saint Lucia': -50, 'Barbados': 0, 'Grenada': -34, 'Haiti': -22, 'Dominican Republic': 34, 'Grenada': 44, 'Dominica': 54, 'Antigua and Barbuda': 0, 'Saint Kitts and Nevis': -72, 'Saint Vincent and the Grenadines': -86, 'Trinidad and Tobago': 0})[f.properties.name] || 0,
       dy: f => ({'Haiti': 4, 'Dominican Republic': 4, 'Saint Lucia': -8, 'Antigua and Barbuda': -24, 'Barbados': 34, 'Grenada': 26, 'Dominica': 4, 'Saint Kitts and Nevis': 4, 'Saint Vincent and the Grenadines': 16, 'Trinidad and Tobago': 36, 'Bahamas': 4})[f.properties.name] ?? 4});
