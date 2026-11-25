@@ -1,0 +1,169 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1100">
+<title>Master of the Continents · Mockups</title><link rel="stylesheet" href="mockups.css"></head><body>
+<div class="page-head"><h1>Master of the Continents: mockups</h1>
+<p>Static screens showing the planned look and rules, using North America as the example. The real maps are drawn live, but the buttons don't do anything yet.</p></div>
+
+<!-- 1 TITLE -->
+<div class="frame"><p class="cap">1 · Title screen<small>Night sea, a galleon with lit lanterns, and the Set Sail button. Below it, the saved rank for this device.</small></p>
+<div class="screen" id="s1" style="background:linear-gradient(#020a14,#06213a 55%,#0b3354)"><div class="stars-bg"></div><div class="moon"></div>
+<div class="title-wrap"><div class="k">A VOYAGE OF GEOGRAPHY</div><h2><small>MASTER OF THE</small>CONTINENTS</h2></div>
+<div class="galleon" data-galleon></div>
+<svg class="waves" viewBox="0 0 1024 270" preserveAspectRatio="none"><path d="M0 90Q128 60 256 90T512 90T768 90T1024 90V270H0Z" fill="#0b3a5c" opacity=".85"/><path d="M0 130Q128 100 256 130T512 130T768 130T1024 130V270H0Z" fill="#082c47"/><path d="M0 175Q128 150 256 175T512 175T768 175T1024 175V270H0Z" fill="#051d31"/></svg>
+<div class="title-cta"><button class="gbtn" style="font-size:28px;padding:16px 60px">SET SAIL</button><p>Saved on this device: <b style="color:#ffd77a">Junior Sailor</b> · 1 of 6 continents underway</p></div></div></div>
+
+<!-- 2 VOYAGE CHART -->
+<div class="frame"><p class="cap">2 · Voyage chart (pick a continent)<small>Each continent shows the rank earned there. Becoming Admiral on all six makes you Master of the Continents.</small></p>
+<div class="screen sea-bg" id="s2"><svg class="map" id="m-world"></svg>
+<div class="hud"><div class="rank"><span data-ins="sailor" style="width:42px;height:42px"></span><div><small>Rank</small>Junior Sailor</div></div><div class="mid">Choose your voyage<small>Admiral of all 6 continents = Master of the Continents</small></div><span class="chip">0 / 6 Admiral</span></div>
+<div class="pin sel" data-at="[-102,47]"><span class="ins" data-ins="captain"></span><b>North America</b><span>Captain · Capitals next</span></div>
+<div class="pin" data-at="[-60,-15]"><span class="ins" data-ins="sailor"></span><b>South America</b><span>Political L1 · 1/3 tests</span></div>
+<div class="pin" data-at="[15,52]"><span class="ins" data-ins="sailor" data-locked></span><b>Europe</b><span style="color:#8fb3cc">Not started</span></div>
+<div class="pin" data-at="[20,5]"><span class="ins" data-ins="sailor" data-locked></span><b>Africa</b><span style="color:#8fb3cc">Not started</span></div>
+<div class="pin" data-at="[92,40]"><span class="ins" data-ins="sailor" data-locked></span><b>Asia</b><span style="color:#8fb3cc">Not started</span></div>
+<div class="pin" data-at="[140,-25]"><span class="ins" data-ins="sailor" data-locked></span><b>Oceania</b><span style="color:#8fb3cc">Not started</span></div>
+</div></div>
+
+<!-- 3 RANKS -->
+<div class="frame"><p class="cap">3 · Captain's log: the four ranks<small>Every continent has its own ranks. Each rank is earned by passing all layers of one map type on that continent.</small></p>
+<div class="screen"><div class="hud"><div class="mid">Captain's Log · Ranks of the Fleet</div></div>
+<div class="ladder">
+ <div class="rung"><span class="arrow">➜</span><div class="ins" data-ins="sailor"></div><h4>Junior Sailor</h4><p>Where every voyage begins. Learn each layer and pass its training tests.</p><div class="how">Start rank</div></div>
+ <div class="rung cur"><span class="arrow">➜</span><div class="ins" data-ins="captain"></div><h4>Captain</h4><p>Identify <b>every country</b> on the continent: the political map.</p><div class="how">Pass every Political layer's Sailing Challenge</div></div>
+ <div class="rung"><span class="arrow">➜</span><div class="ins" data-ins="commodore" data-locked></div><h4>Commodore</h4><p>Know the <b>capital</b> of every country, plus one notable fact.</p><div class="how">Pass every Capitals layer's Sailing Challenge</div></div>
+ <div class="rung"><div class="ins" data-ins="admiral" data-locked></div><h4>Admiral</h4><p>Know the <b>physical map</b>: key rivers, mountains, lakes and plains.</p><div class="how">Pass every Physical layer's Sailing Challenge → treasure chest</div></div>
+</div>
+<div class="master"><div><h3>Master of the Continents</h3><p>Become Admiral of all six continents.</p></div><div style="flex:1"></div>
+<div class="mini-row"><span class="ins" data-ins="captain"></span><span class="ins" data-ins="sailor"></span><span class="ins" data-ins="sailor" data-locked></span><span class="ins" data-ins="sailor" data-locked></span><span class="ins" data-ins="sailor" data-locked></span><span class="ins" data-ins="sailor" data-locked></span></div></div>
+</div></div>
+
+<!-- 4 CONTINENT HUB -->
+<div class="frame"><p class="cap">4 · North America hub: layers, tests and Sailing Challenges<small>Each layer needs 3 training tests passed at 9/10 or better. That unlocks its Sailing Challenge, and passing the challenge unlocks the next layer. Political Layer 2 is the 13-round challenge that allows 3 misses.</small></p>
+<div class="screen"><div class="hud"><div class="rank"><span data-ins="captain" style="width:42px;height:42px"></span><div><small>North America</small>Captain</div></div><div class="mid">North America<small>23 countries · 3 map types</small></div><span class="chip">Next rank: Commodore</span></div>
+<div class="tracks">
+ <div class="track"><h4><span class="ins" data-ins="captain"></span>Political · Countries</h4><div class="sub">Complete · Captain earned</div>
+  <div class="layer done"><div class="t">Layer 1 · Mainland <em>10 countries</em></div><div class="row">Tests <span class="pip ok">✓</span><span class="pip ok">✓</span><span class="pip ok">✓</span><span class="ship ok">⚓ Challenge 10/10</span></div></div>
+  <div class="layer done"><div class="t">Layer 2 · Caribbean <em>13 countries</em></div><div class="row">Tests <span class="pip ok">✓</span><span class="pip ok">✓</span><span class="pip ok">✓</span><span class="ship ok">⚓ Challenge 11/13</span></div><span class="exc">★ Special rule: 13 rounds, up to 3 misses allowed</span></div>
+  <p style="font-size:13px;color:#8fb3cc;margin:10px 4px 0">Other continents have up to 10 countries per layer, with as many layers as needed. The last layer can be smaller.</p></div>
+ <div class="track cur"><h4><span class="ins" data-ins="commodore"></span>Capitals</h4><div class="sub">In progress → Commodore</div>
+  <div class="layer done"><div class="t">Layer 1 <em>8 capitals</em></div><div class="row">Tests <span class="pip ok">✓</span><span class="pip ok">✓</span><span class="pip ok">✓</span><span class="ship ok">⚓ 8/8</span></div></div>
+  <div class="layer cur"><div class="t">Layer 2 <em>8 capitals</em></div><div class="row">Tests <span class="pip ok">✓</span><span class="pip ok">✓</span><span class="pip">3</span><span class="ship"><svg viewBox="0 0 16 16" width="12" height="12" style="vertical-align:-1px"><rect x="3" y="7" width="10" height="8" rx="1.5" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/></svg> Challenge</span></div></div>
+  <div class="layer lock"><div class="t">Layer 3 <em>7 capitals</em></div><div class="row">Tests <span class="pip">1</span><span class="pip">2</span><span class="pip">3</span><span class="ship"><svg viewBox="0 0 16 16" width="12" height="12" style="vertical-align:-1px"><rect x="3" y="7" width="10" height="8" rx="1.5" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></div></div></div>
+ <div class="track"><h4><span class="ins" data-ins="admiral" data-locked></span>Physical</h4><div class="sub">Opens after Commodore → Admiral</div>
+  <div class="layer lock"><div class="t">Layer 1 · Mountains &amp; plains</div><div class="row">Tests <span class="pip">1</span><span class="pip">2</span><span class="pip">3</span><span class="ship"><svg viewBox="0 0 16 16" width="12" height="12" style="vertical-align:-1px"><rect x="3" y="7" width="10" height="8" rx="1.5" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></div></div>
+  <div class="layer lock"><div class="t">Layer 2 · Rivers</div><div class="row">Tests <span class="pip">1</span><span class="pip">2</span><span class="pip">3</span><span class="ship"><svg viewBox="0 0 16 16" width="12" height="12" style="vertical-align:-1px"><rect x="3" y="7" width="10" height="8" rx="1.5" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></div></div>
+  <div class="layer lock"><div class="t">Layer 3 · Lakes &amp; coasts</div><div class="row">Tests <span class="pip">1</span><span class="pip">2</span><span class="pip">3</span><span class="ship"><svg viewBox="0 0 16 16" width="12" height="12" style="vertical-align:-1px"><rect x="3" y="7" width="10" height="8" rx="1.5" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/></svg></span></div></div>
+  <div style="text-align:center;margin-top:16px"><div data-chest style="width:120px;margin:0 auto;filter:grayscale(.8) brightness(.6)"></div><div style="font-size:13px;color:#8fb3cc">Treasure chest waits at Admiral</div></div></div>
+</div></div></div>
+
+<!-- 5 LEARN -->
+<div class="frame"><p class="cap">5 · Learn mode: Political Layer 2 (Caribbean)<small>Tap a country to hear and see its name. Small islands get large gold tap circles, and you can zoom with + / − or a pinch. Countries already reviewed turn green.</small></p>
+<div class="screen sea-bg"><svg class="map" id="m-learn"></svg>
+<div class="hud"><div class="rank"><span data-ins="captain" style="width:42px;height:42px"></span><div><small>Political · Layer 2</small>Learn</div></div><div class="mid">Caribbean Islands<small>Tap each country to learn it</small></div><span class="chip">6 / 13 reviewed</span></div>
+<div class="zoom"><b>+</b><b>−</b><b style="font-size:16px">⤢</b></div>
+<div class="side"><h3>Saint Lucia</h3><p>Capital: <b>Castries</b></p><p style="color:#8fb3cc">Famous for the Pitons, two volcanic spires rising from the sea.</p>
+<ul class="list"><li class="ok">Cuba <span>✓</span></li><li class="ok">Jamaica <span>✓</span></li><li class="ok">Haiti <span>✓</span></li><li class="ok">Dominican Republic <span>✓</span></li><li class="ok">Bahamas <span>✓</span></li><li class="ok">Barbados <span>✓</span></li><li class="cur">Saint Lucia <span>●</span></li><li>+ 6 more</li></ul>
+<button class="gbtn" style="width:100%;font-size:18px;margin-top:6px">Begin Test 1 of 3</button></div></div></div>
+
+<!-- 6 TEST -->
+<div class="frame"><p class="cap">6 · Training test (2 of 3): find it on the map<small>10 questions per test, and 9/10 passes. Here Barbados was missed, so the right country flashes. Questions mix "find it" and "name it".</small></p>
+<div class="screen sea-bg"><svg class="map" id="m-test"></svg>
+<div class="hud"><div class="rank"><span data-ins="captain" style="width:42px;height:42px"></span><div><small>Political · Layer 2</small>Test 2 of 3</div></div><div class="mid">Question 7 of 10<small>Need 9 / 10 to pass</small></div><div class="tests"><span class="pip ok">✓</span><span class="pip" style="border-color:#ffd77a;color:#ffd77a">2</span><span class="pip">3</span></div></div>
+<div class="zoom"><b>+</b><b>−</b></div>
+<div class="panel"><div class="q">Tap <span class="nm">Barbados</span></div><div class="feedback">You tapped Saint Lucia. Barbados is the flashing island farthest east. 1 miss used, 1 more allowed to still pass.</div>
+<div class="dots"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="bad"></i><i></i><i></i><i></i></div></div></div></div>
+
+<!-- 7 TEST PASSED -->
+<div class="frame"><p class="cap">7 · Test passed<small>Each pass at 9/10 or better fills one of the 3 marks. All 3 unlock the Sailing Challenge. A score of 8/10 doesn't count, and you can retry any time.</small></p>
+<div class="screen sea-bg"><svg class="map" id="m-test-bg" style="opacity:.0"></svg><div class="modal" style="background:radial-gradient(#0f4566,#04121f)"><div class="card parch">
+<h3>Test Passed!</h3><div class="big" style="color:#2f7a4a">9<span style="font-size:40px;color:#7a5a2a"> / 10</span></div><p style="font-size:17px;margin:6px 0 18px">90% · Political Layer 2 · Caribbean</p>
+<div style="display:flex;justify-content:center;gap:16px;margin-bottom:12px"><span class="pip ok" style="width:54px;height:54px;font-size:24px">✓</span><span class="pip ok" style="width:54px;height:54px;font-size:24px">✓</span><span class="pip" style="width:54px;height:54px;font-size:20px;border-color:#9c6a17;color:#9c6a17">3</span></div>
+<p style="font-size:15px;margin:0 0 20px">2 of 3 tests passed. <b>One more</b> unlocks the Sailing Challenge.</p>
+<button class="gbtn">Take Test 3</button> &nbsp; <button class="obtn" style="color:#5b3a21;border-color:#9c6a17;background:transparent">Review missed</button></div></div></div></div>
+
+<!-- 8 SAILING CHALLENGE -->
+<div class="frame"><p class="cap">8 · Sailing Challenge: North America Political Layer 2 (special rule)<small>13 rounds, one for each Caribbean country, and up to 3 misses are allowed. Every miss costs a cannonball. Losing a 4th means trying again.</small></p>
+<div class="screen sea-bg" style="background:radial-gradient(ellipse at 40% 40%,#1a4a6e,#0a2238 60%,#030f1b)"><svg class="map" id="m-chal"></svg>
+<div class="hud"><div class="rank"><span data-ins="sailor" style="width:42px;height:42px"></span><div><small>Sailing Challenge</small>Political L2</div></div><div class="mid">Round 9 of 13<small>No hints · No labels · Pass to unlock Captain</small></div>
+<div class="hearts"><span style="font-weight:800;font-size:13px;color:#8fb3cc;margin-right:4px">MISSES LEFT</span><span class="ball"></span><span class="ball"></span><span class="ball gone"></span></div></div>
+<div class="zoom"><b>+</b><b>−</b></div>
+<div class="panel"><div class="q">Tap <span class="nm">Saint Vincent and the Grenadines</span></div>
+<div class="dots"><i class="ok"></i><i class="ok"></i><i class="bad"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="cur"></i><i></i><i></i><i></i><i></i></div>
+<div style="color:#8fb3cc;font-size:14px;margin-top:8px">8 correct · 1 miss · 2 misses still allowed</div></div></div></div>
+
+<!-- 9 CAPITALS -->
+<div class="frame"><p class="cap">9 · Capitals: mixed question types + a fact per country<small>One capitals test mixes 4 question types, and every country comes with one notable fact. This shows the 4 types side by side. In the game they appear one at a time.</small></p>
+<div class="screen"><div class="hud"><div class="rank"><span data-ins="captain" style="width:42px;height:42px"></span><div><small>Capitals · Layer 2</small>Test 3 of 3</div></div><div class="mid">Question 4 of 10<small>Need 9 / 10</small></div><div class="tests"><span class="pip ok">✓</span><span class="pip ok">✓</span><span class="pip" style="border-color:#ffd77a;color:#ffd77a">3</span></div></div>
+<div class="capgrid">
+ <div class="qc"><span class="tag">Country → Capital</span><h5>What is the capital of <span class="nm">Honduras</span>?</h5><div class="choices"><div class="choice ok">Tegucigalpa</div><div class="choice">San Salvador</div><div class="choice">Managua</div><div class="choice">Belmopan</div></div></div>
+ <div class="qc" style="padding:0;overflow:hidden;height:300px"><span class="tag" style="position:absolute;left:16px;top:14px;z-index:2">Capital → Tap the country</span><h5 style="position:absolute;left:10px;top:30px;z-index:2;background:rgba(6,27,45,.88);padding:4px 8px;border-radius:8px">Which country has <span class="nm">Ottawa</span>?</h5><svg id="m-cap" viewBox="0 0 470 300" style="width:100%;height:100%;background:radial-gradient(#14527a,#0a2c47)"></svg></div>
+ <div class="qc"><span class="tag">Capital → Country</span><h5><span class="nm">Kingston</span> is the capital of…</h5><div class="choices"><div class="choice">Bahamas</div><div class="choice bad">Barbados</div><div class="choice ok">Jamaica</div><div class="choice">Grenada</div></div></div>
+ <div class="qc"><span class="tag">Spell it</span><h5>Type the capital of <span class="nm">Belize</span></h5><div class="typed"><div>Belmop<span style="color:#ffd77a">|</span></div><button class="gbtn" style="font-size:16px;padding:10px 18px">Check</button></div><p style="font-size:13px;color:#8fb3cc;margin:8px 0 0">Close spellings are accepted, and the correct spelling is shown after.</p></div>
+</div>
+<div class="parch fact" style="position:absolute;left:22px;right:22px;bottom:22px"><div class="seal">!</div><div><h6>Notable fact · Honduras</h6><p>Tegucigalpa is one of the few capitals in the world with no railway. Honduras is also home to the ancient Maya city of <b>Copán</b>.</p></div></div>
+</div></div>
+
+<!-- 10 PHYSICAL -->
+<div class="frame"><p class="cap">10 · Physical map: rivers, mountains, lakes<small>The same learn, then 3 tests, then Sailing Challenge pattern, using real river, lake and mountain shapes. Features that matter for one country are tagged with it.</small></p>
+<div class="screen sea-bg"><svg class="map" id="m-phys"></svg>
+<div class="hud"><div class="rank"><span data-ins="commodore" style="width:42px;height:42px"></span><div><small>Physical · Layer 2</small>Test 1 of 3</div></div><div class="mid">Rivers of North America<small>Question 3 of 10</small></div><div class="tests"><span class="pip" style="border-color:#ffd77a;color:#ffd77a">1</span><span class="pip">2</span><span class="pip">3</span></div></div>
+<div class="side"><h3>Which river is glowing?</h3><div class="choices" style="grid-template-columns:1fr;margin:10px 0"><div class="choice ok">Mississippi</div><div class="choice">Missouri</div><div class="choice">Ohio</div><div class="choice">Rio Grande</div></div>
+<div class="parch" style="padding:12px 14px;font-size:14px;line-height:1.4"><b style="font-family:Cinzel">Mississippi · USA</b><br>Flows about 3,700 km from Minnesota to the Gulf of Mexico.</div>
+<p style="font-size:13px;color:#8fb3cc">Layers: 1 Mountains &amp; plains (Rockies, Appalachians, Sierra Madre, Great Plains) · 2 Rivers (Mississippi, Missouri, Ohio, Colorado, Rio Grande, St. Lawrence, Yukon, Mackenzie, Columbia) · 3 Lakes &amp; coasts (Great Lakes, Great Bear, Great Slave, Florida, Yucatán)</p></div></div></div>
+
+<!-- 11 PROMOTION -->
+<div class="frame"><p class="cap">11 · Promotion ceremony<small>Shown when all layers of a map type are passed. Here, passing the Political Layer 2 challenge earns Captain of North America.</small></p>
+<div class="screen" style="background:radial-gradient(circle at 50% 40%,#1b5a85,#06213a 60%,#020a14)"><div class="stars-bg"></div>
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+<div class="serif" style="color:#8fb3cc;letter-spacing:5px">BY ORDER OF THE ADMIRALTY</div>
+<div data-ins="captain" style="width:230px;height:230px;margin:10px 0;filter:drop-shadow(0 0 30px rgba(255,215,122,.5))"></div>
+<div class="serif" style="font-size:22px;color:#cfe3f1">Junior Sailor Tom is hereby promoted to</div>
+<div class="serif" style="font-weight:900;font-size:60px;color:#ffd77a;text-shadow:0 4px 20px rgba(232,181,77,.5)">CAPTAIN</div>
+<div class="serif" style="font-size:24px;color:#fff">of North America</div>
+<p style="color:#cfe3f1;font-size:16px;max-width:520px">All 23 countries identified. The <b>Capitals</b> voyage is now open. Master it to become Commodore.</p>
+<button class="gbtn">Onward</button></div></div></div>
+
+<!-- 12 TREASURE -->
+<div class="frame"><p class="cap">12 · Continent mastered: treasure chest and code scroll<small>Becoming Admiral of a continent opens its chest, which holds a scroll with a secret code. Codes are saved in the log, and collecting all six could unlock a final reward.</small></p>
+<div class="screen" style="background:radial-gradient(circle at 50% 35%,#2a5a7a,#06213a 55%,#020a14)"><div class="stars-bg"></div>
+<div style="position:absolute;top:28px;left:0;right:0;text-align:center"><div class="serif" style="font-weight:900;font-size:40px;color:#ffd77a">North America Mastered!</div><div style="color:#cfe3f1;font-size:17px">Admiral of North America · Political ✓ Capitals ✓ Physical ✓</div></div>
+<div data-chest style="position:absolute;left:342px;top:120px;width:340px"></div>
+<div class="parch scroll" style="position:absolute;left:252px;top:420px;width:520px"><div class="serif" style="font-size:15px;letter-spacing:3px;color:#7a5a2a">TREASURE CODE · 1 OF 6</div>
+<div class="code">NA · ORCA · 7</div><div style="font-size:14px">Write this code in your log. Keep all six to claim the title <b>Master of the Continents</b>.</div></div>
+<div style="position:absolute;bottom:30px;left:0;right:0;text-align:center"><button class="gbtn">Claim Treasure</button></div></div></div>
+
+<!-- 13 SAVE -->
+<div class="frame"><p class="cap">13 · Saved progress (localStorage)<small>Every test pass, challenge, rank and code is saved in the browser on that device, so closing the tab loses nothing. Each device keeps its own copy (son's computer and iPad are separate unless we add sync later).</small></p>
+<div class="screen"><div class="hud"><div class="mid">Ship's Log · Saved on this device</div></div>
+<div style="position:absolute;top:84px;left:24px;right:24px;display:grid;grid-template-columns:1fr 1fr;gap:18px">
+<pre class="ls"><span class="c">// localStorage key: "motc.v1"</span>
+{
+  <span class="k">"player"</span>: <span class="s">"Tom"</span>,
+  <span class="k">"continents"</span>: {
+    <span class="k">"NA"</span>: {
+      <span class="k">"rank"</span>: <span class="s">"captain"</span>,
+      <span class="k">"political"</span>: [
+        { <span class="k">"tests"</span>: [10, 9, 10], <span class="k">"challenge"</span>: <span class="s">"10/10"</span> },
+        { <span class="k">"tests"</span>: [9, 10, 9],  <span class="k">"challenge"</span>: <span class="s">"11/13"</span> }
+      ],
+      <span class="k">"capitals"</span>: [
+        { <span class="k">"tests"</span>: [9, 10, 10], <span class="k">"challenge"</span>: <span class="s">"8/8"</span> },
+        { <span class="k">"tests"</span>: [9, 10], <span class="k">"challenge"</span>: null },
+        { <span class="k">"tests"</span>: [], <span class="k">"challenge"</span>: null }
+      ],
+      <span class="k">"physical"</span>: [ <span class="c">/* locked */</span> ],
+      <span class="k">"missed"</span>: { <span class="s">"Barbados"</span>: 2, <span class="s">"Belmopan"</span>: 1 }
+    },
+    <span class="k">"SA"</span>: { <span class="k">"rank"</span>: <span class="s">"sailor"</span>, <span class="k">"political"</span>: [{ <span class="k">"tests"</span>: [9] }] }
+  },
+  <span class="k">"codes"</span>: [],
+  <span class="k">"inProgress"</span>: { <span class="k">"mode"</span>: <span class="s">"test"</span>, <span class="k">"q"</span>: 4, <span class="k">"score"</span>: 3 }
+}</pre>
+<div><div class="layer" style="padding:16px"><div class="t" style="font-size:17px">What counts as a pass</div><div style="font-size:14.5px;line-height:1.55;color:#cfe3f1;margin-top:6px">
+• Only scores of 9/10 or better are kept as test passes.<br>• 3 passes unlock that layer's Sailing Challenge.<br>• Passing the challenge unlocks the next layer.<br>• NA Political L2 challenge: 13 rounds, 3 misses allowed.<br>• All layers in a map type = new rank on that continent.</div></div>
+<div class="layer" style="padding:16px"><div class="t" style="font-size:17px">Also saved</div><div style="font-size:14.5px;line-height:1.55;color:#cfe3f1;margin-top:6px">• A test in progress, so you resume where you stopped<br>• Countries you keep missing, for extra practice<br>• Treasure codes collected</div></div>
+<div style="display:flex;gap:10px;margin-top:6px"><button class="obtn" style="font-size:15px">Export save code</button><button class="obtn" style="font-size:15px">Import on iPad</button></div>
+<p style="font-size:13px;color:#8fb3cc">Optional: a copy-paste save code moves progress between devices without logins.</p></div></div></div></div>
+
+<div style="height:60px"></div>
+<script src="../vendor/d3.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="art.js"></script><script src="maps.js"></script>
+</body></html>
