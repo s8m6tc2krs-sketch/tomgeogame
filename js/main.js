@@ -337,8 +337,9 @@ function drawPlayMap() {
       .attr('data-k', f => 's:' + f.properties.id).attr('d', path);
   }
   if (L.map === 'phys') {
-    const order = ['sea', 'plain', 'island', 'range', 'lake', 'river'];
-    const keys = L.items.slice().sort((a, b) => order.indexOf(ITEMS[a].kind) - order.indexOf(ITEMS[b].kind));
+    // big areas first so features inside them (Altiplano in the Andes, lakes) stay tappable; rivers on top
+    const size = k => ITEMS[k].kind === 'river' ? -1 : Math.abs(path.area(ITEMS[k].f));
+    const keys = L.items.slice().sort((a, b) => size(b) - size(a));
     const gp = pm.g.append('g');
     keys.forEach(k => {
       const it = ITEMS[k], g = gp.append('g').attr('class', 'feat').attr('data-k', k);
