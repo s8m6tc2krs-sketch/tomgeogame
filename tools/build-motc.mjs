@@ -17,7 +17,10 @@ const objects = {};
 for (const [cont, layers] of Object.entries(PHYSICAL)) {
   const feats = [];
   for (const layer of layers) for (const [id, name, kind, s, names, box] of layer.items) {
-    let parts = src[s].filter(f => names.includes(nm(f)) && (!box || inBox(f, box)));
+    let parts = src[s].filter(f => names.includes(nm(f)));
+    if (box) parts = parts.flatMap(f => (f.geometry.type.startsWith('Multi') ? f.geometry.coordinates : [f.geometry.coordinates])
+      .map(c => ({type: 'Feature', properties: {}, geometry: {type: f.geometry.type.replace('Multi', ''), coordinates: c}})))
+      .filter(f => inBox(f, box));
     if (id === 'stlawrence') parts.push(stLawrence);
     if (!parts.length) throw new Error(`no match for ${cont} ${id}`);
     const geoms = parts.map(f => f.geometry);
