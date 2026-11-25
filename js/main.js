@@ -509,7 +509,8 @@ function lev(a, b) {
   return d[a.length][b.length];
 }
 function typedOk(v, it) {
-  const n = norm(v);
+  const n = norm(v), mine = [it.capital, ...(it.alt || [])].map(norm);
+  if (!mine.includes(n) && Object.values(ITEMS).some(x => x.capital && norm(x.capital) === n)) return false;
   return [it.capital, ...(it.alt || [])].map(norm).some(a => a === n || lev(a, n) <= (a.length >= 9 ? 2 : a.length >= 5 ? 1 : 0));
 }
 function onPick(k) {
