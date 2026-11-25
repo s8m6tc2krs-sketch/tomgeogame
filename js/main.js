@@ -419,7 +419,7 @@ function startPlay(L, mode) {
 function resume() {
   const ip = S.inProgress, L = ip && LAYERS[ip.layer];
   if (!L) { S.inProgress = null; save(); return; }
-  P = {layer: L, mode: ip.mode, marks: {}, queue: ip.queue, i: ip.i, score: ip.score, misses: ip.misses, results: ip.results || []};
+  P = {layer: L, mode: ip.mode, marks: {}, queue: ip.queue, i: ip.i, score: ip.score, misses: ip.misses, results: ip.results || [], sunk: !!ip.sunk};
   openPlay();
 }
 function openPlay() {
@@ -431,7 +431,7 @@ function openPlay() {
   $('#playTitle').textContent = L.track === 'capitals' ? `Capitals · Layer ${L.idx + 1}` : L.name;
   renderSide();
   drawPlayMap();
-  if (P.mode !== 'learn') ask();
+  if (P.mode !== 'learn') { if (P.sunk || P.i >= P.queue.length) finish(P.sunk); else ask(); }
 }
 $('#playBack').onclick = () => { P = null; show('hub'); };
 function hudPips() {
@@ -544,7 +544,7 @@ function answer(ok, btn, typed, tapped) {
   $('#fbBox').innerHTML = `${msg}${fact}<button class="gbtn" id="nextQ" style="width:100%;font-size:18px;margin-top:6px">${last ? 'See results' : 'Next ›'}</button>`;
   $('#nextQ').onclick = () => { if (last) finish(sunk); else { P.i++; ask(); } };
   setTimeout(() => $('#nextQ') && $('#nextQ').focus({preventScroll: true}), 30);
-  S.inProgress = last ? null : {layer: L.id, mode: P.mode, queue: P.queue, i: P.i + 1, score: P.score, misses: P.misses, results: P.results};
+  S.inProgress = {layer: L.id, mode: P.mode, queue: P.queue, i: P.i + 1, score: P.score, misses: P.misses, results: P.results, sunk};
   save(); restyleMap(); hudPips();
   if (!ok) zoomTo(q.k);
 }
