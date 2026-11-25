@@ -548,6 +548,8 @@ function answer(ok, btn, typed, tapped) {
   if (!ok) zoomTo(q.k);
 }
 function finish(sunk) {
+  if (P.finished) return;
+  P.finished = true;
   const L = P.layer, p = prog(L.id), n = P.queue.length, before = rankOf(L.cont);
   const missed = [...new Set(P.queue.filter((q, i) => P.results[i] === false).map(q => ITEMS[q.k].name))];
   const missList = missed.length ? `<p style="font-size:14px">To review: ${missed.map(esc).join(', ')}</p>` : '';
@@ -599,7 +601,7 @@ function celebrate(cont, before) {
 }
 
 // keyboard: Enter = next
-addEventListener('keydown', e => { if (e.key === 'Enter' && $('#nextQ') && current === 'play' && document.activeElement?.id !== 'typedIn') { e.preventDefault(); $('#nextQ').click(); } });
+addEventListener('keydown', e => { if (e.key === 'Enter' && $('#nextQ') && current === 'play' && $('#modal').classList.contains('hidden') && document.activeElement?.id !== 'typedIn') { e.preventDefault(); $('#nextQ').click(); } });
 let rT;
 addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(() => { if (current === 'chart') renderChart(); if (current === 'play' && P) drawPlayMap(); }, 150); });
 
