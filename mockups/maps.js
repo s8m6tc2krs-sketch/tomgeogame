@@ -23,14 +23,14 @@ function taps(svg, path, feats, opts) {
   feats.forEach(f => {
     const [[a, b], [c, d]] = path.bounds(f); const big = Math.max(c - a, d - b);
     const [x, y] = path.centroid(f); const st = opts.state(f);
-    if (big < 34) g.append('circle').attr('cx', x).attr('cy', y).attr('r', 17).attr('class', 'tap ' + (st || ''));
+    if (big < 34 || (opts.force && opts.force(f))) g.append('circle').attr('cx', x).attr('cy', y).attr('r', 17).attr('class', 'tap ' + (st || ''));
     if (opts.label && opts.label(f)) {
       const dx = opts.dx ? opts.dx(f) : 0, dy = opts.dy ? opts.dy(f) : (big < 34 ? 30 : 4);
       g.append('text').attr('class', 'lbl').attr('x', x + dx).attr('y', y + dy).attr('text-anchor', 'middle').text(opts.label(f));
     }
   });
 }
-Promise.all([fetch('data/na.json').then(r => r.json()), fetch('data/land.json').then(r => r.json())]).then(([na, land]) => {
+Promise.all(['na', 'land', 'states'].map(n => fetch(`data/${n}.json`).then(r => r.json()))).then(([na, land, st]) => {
   const C = topojson.feature(na, na.objects.countries).features;
   const lf = topojson.feature(land, land.objects.land);
   const under = (svg, path) => svg.append('path').attr('class', 'cty').attr('d', path(lf));
@@ -72,5 +72,16 @@ Promise.all([fetch('data/na.json').then(r => r.json()), fetch('data/land.json').
     svg.append('g').selectAll('path').data(Rv).join('path').attr('d', path).attr('class', f => 'river' + (f.properties.name === 'Mississippi' ? ' hl' : ''));
     const lab = (t, p, a = 'middle') => { const [x, y] = proj(p); svg.append('text').attr('class', 'lbl').attr('x', x).attr('y', y).attr('text-anchor', a).text(t); };
     lab('Rocky Mts', [-112, 46]); lab('Appalachian Mts', [-80, 37.5]); lab('Great Lakes', [-84, 47.8]); lab('Great Plains', [-101, 41]);
+  }
+
+  // states & provinces: Northeast layer
+  { const S = topojson.feature(st, st.objects.states).features;
+    const NE = ['CT', 'ME', 'MA', 'NH', 'NJ', 'NY', 'PA', 'RI', 'VT', 'DE'], done = {ME: 1, NY: 1, VT: 1, PA: 1, NJ: 1};
+    const proj = fitBox(73, [[-80.6, 38.4], [-66.8, 47.5]], [[30, 76], [640, H - 24]]); const {svg, path} = base('#m-states', proj);
+    drawCountries(svg, path, S, f => NE.includes(f.properties.postal) ? (done[f.properties.postal] ? 'ok' : 'on') : '');
+    taps(svg, path, S.filter(f => ['RI', 'DE', 'CT'].includes(f.properties.postal) || 0), {state: () => '', force: () => true});
+    const lab = (t, p) => { const [x, y] = proj(p); svg.append('text').attr('class', 'lbl').attr('x', x).attr('y', y).attr('text-anchor', 'middle').text(t); };
+    lab('Maine', [-69.2, 45.3]); lab('New York', [-75.3, 42.9]); lab('Vermont', [-72.7, 44.3]); lab('Pennsylvania', [-77.6, 40.9]); lab('New Jersey', [-74.2, 40.2]);
+    lab('QUEBEC', [-72.5, 46.9]); lab('ONTARIO', [-78.8, 44.9]);
   }
 });
