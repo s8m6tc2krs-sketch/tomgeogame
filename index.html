@@ -2,85 +2,53 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="GeoGame">
-<meta name="theme-color" content="#2a5bd7">
-<title>Tom's GeoGame</title>
+<meta name="apple-mobile-web-app-title" content="Continents">
+<meta name="theme-color" content="#030f1b">
+<title>Master of the Continents</title>
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.png">
-<link rel="preload" href="fonts/fredoka-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/motc.css">
 </head>
 <body>
-<div id="app">
-  <header id="topbar">
-    <button id="menuBtn" class="pill hidden" aria-label="Back to menu">&larr; Menu</button>
-    <div id="brand"><img src="icon.svg" alt=""><span>Tom's <b>GeoGame</b></span></div>
-    <div id="dots" class="hidden"></div>
-    <div id="stats" class="hidden">
-      <span id="streak" class="pill hidden"></span>
-      <span id="score" class="pill"><i>&#9733;</i> <b>0</b></span>
-    </div>
-  </header>
+<section id="title" class="screen" style="background:linear-gradient(#020a14,#06213a 55%,#0b3354)">
+  <div class="stars-bg"></div><div class="moon"></div>
+  <div class="title-wrap"><div class="k">A VOYAGE OF GEOGRAPHY</div><h1><small>MASTER OF THE</small>CONTINENTS</h1></div>
+  <div class="galleon"><div id="galleon"></div></div>
+  <svg class="waves" viewBox="0 0 1024 270" preserveAspectRatio="none"><path d="M0 90Q128 60 256 90T512 90T768 90T1024 90V270H0Z" fill="#0b3a5c" opacity=".85"/><path d="M0 130Q128 100 256 130T512 130T768 130T1024 130V270H0Z" fill="#082c47"/><path d="M0 175Q128 150 256 175T512 175T768 175T1024 175V270H0Z" fill="#051d31"/></svg>
+  <div class="title-cta"><div id="nameRow" class="hidden"><input id="playerName" maxlength="16" placeholder="Sailor's name" autocomplete="off"></div>
+    <button id="setSail" class="gbtn" style="font-size:26px;padding:15px 56px">SET SAIL</button><p id="titleStatus">Loading charts…</p></div>
+</section>
 
-  <main id="mapWrap">
-    <svg id="map" role="img" aria-label="World map"></svg>
-    <div id="zoomCtl">
-      <button id="zoomIn" aria-label="Zoom in">+</button>
-      <button id="zoomOut" aria-label="Zoom out">&minus;</button>
-      <button id="zoomReset" aria-label="Reset zoom">&#8634;</button>
-    </div>
-    <div id="toast" class="hidden"></div>
-  </main>
+<section id="chart" class="screen sea-bg hidden">
+  <svg class="map" id="worldMap"></svg>
+  <div class="hud"><div class="rank"><span class="ins" id="chartIns"></span><div class="txt"><small>Rank</small><span id="chartRank"></span></div></div>
+    <div class="mid">Choose your voyage<small>Admiral of all 6 continents = Master of the Continents</small></div><span class="chip" id="chartChip"></span></div>
+  <div id="pins"></div>
+  <div class="chart-foot"><button class="obtn" id="btnRanks">Ranks</button><button class="obtn" id="btnSave">Save code</button><button class="obtn" id="btnTitle">Title</button></div>
+</section>
 
-  <section id="prompt" class="hidden">
-    <div id="question"></div>
-    <div id="choices"></div>
-    <div id="feedback"></div>
-    <button id="nextBtn" class="btn primary hidden">Next &rarr;</button>
-  </section>
+<section id="hub" class="screen hidden">
+  <div class="hud"><button class="back" data-go="chart">‹</button><div class="rank"><span class="ins" id="hubIns"></span><div class="txt"><small id="hubCont"></small><span id="hubRank"></span></div></div>
+    <div class="mid"><span id="hubTitle"></span><small id="hubSub"></small></div><span class="chip" id="hubChip"></span></div>
+  <div class="tracks" id="tracks"></div>
+</section>
 
-  <section id="menu" class="overlay">
-    <div class="card">
-      <div class="hero">
-        <img class="globe" src="icon.svg" alt="">
-        <h1>Tom's <span>GeoGame</span></h1>
-        <p>How well do you know the world?</p>
-      </div>
-      <h2>Choose a game</h2>
-      <div class="group modes" id="modeGroup">
-        <button data-mode="find" class="opt mode"><span class="ico"><svg viewBox="0 0 48 48"><circle cx="20" cy="20" r="12" fill="#bfe3ff" stroke="#2a5bd7" stroke-width="5"/><path d="M29 29l11 11" stroke="#2a5bd7" stroke-width="7" stroke-linecap="round"/><path d="M14 17a7 7 0 0 1 6-5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><b>Find it</b><small>Tap the country on the map</small></span></button>
-        <button data-mode="name" class="opt mode"><span class="ico"><svg viewBox="0 0 48 48"><path d="M4 12l13-5 14 5 13-5v29l-13 5-14-5-13 5z" fill="#c6f5be" stroke="#2f9e44" stroke-width="3" stroke-linejoin="round"/><path d="M17 7v29M31 12v29" stroke="#2f9e44" stroke-width="3"/><path d="M24 30s-8-7-8-13a8 8 0 0 1 16 0c0 6-8 13-8 13z" fill="#ff2e88" stroke="#fff" stroke-width="2"/><circle cx="24" cy="17" r="3" fill="#fff"/></svg></span><span class="txt"><b>Name it</b><small>Which country is flashing?</small></span></button>
-        <button data-mode="capital" class="opt mode"><span class="ico"><svg viewBox="0 0 48 48"><path d="M6 17L24 6l18 11z" fill="#ffc531" stroke="#c27c00" stroke-width="3" stroke-linejoin="round"/><path d="M11 20v15M19 20v15M29 20v15M37 20v15" stroke="#a78bfa" stroke-width="5" stroke-linecap="round"/><rect x="6" y="36" width="36" height="6" rx="2" fill="#5a3fd6"/></svg></span><span class="txt"><b>Capitals</b><small>Pick the capital city</small></span></button>
-      </div>
-      <h2>Choose a region</h2>
-      <div class="group regions" id="regionGroup"></div>
-      <div class="startbar"><button id="startBtn" class="btn primary big">Let's go!</button></div>
-      <p class="hint">Pinch or scroll to zoom &middot; drag to move the map</p>
-    </div>
-  </section>
+<section id="play" class="screen sea-bg hidden">
+  <svg class="map" id="playMap"></svg>
+  <div class="hud"><button class="back" id="playBack">‹</button><div class="rank"><span class="ins" id="playIns"></span><div class="txt"><small id="playKicker"></small><span id="playMode"></span></div></div>
+    <div class="mid"><span id="playTitle"></span><small id="playSub"></small></div><span id="playPips" style="display:flex;gap:5px"></span></div>
+  <div class="zoom"><button id="zIn" aria-label="Zoom in">+</button><button id="zOut" aria-label="Zoom out">−</button><button id="zFit" aria-label="Fit map" style="font-size:16px">⤢</button></div>
+  <div class="side" id="side"></div>
+</section>
 
-  <section id="results" class="overlay hidden">
-    <div class="card">
-      <div id="trophy"></div>
-      <h2 id="resultTitle"></h2>
-      <div id="stars"></div>
-      <p id="resultScore"></p>
-      <p id="resultBest"></p>
-      <div id="missed"></div>
-      <div class="row">
-        <button id="againBtn" class="btn primary">Play again</button>
-        <button id="toMenuBtn" class="btn">Menu</button>
-      </div>
-    </div>
-  </section>
-  <canvas id="confetti"></canvas>
-</div>
+<div id="modal" class="modal hidden"><div class="card" id="card"></div></div>
+<div id="toast" class="toast hidden"></div>
+
 <script src="vendor/d3.min.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
-<script src="game.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

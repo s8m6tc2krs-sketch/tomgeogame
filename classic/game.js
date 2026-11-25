@@ -31,7 +31,7 @@ function save(k, v) { try { localStorage.setItem('geo.' + k, JSON.stringify(v));
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const inRegion = (f, r) => r === 'world' || f.properties.continent === r;
 
-fetch('data/world.json').then(r => r.json()).then(topo => {
+fetch('../data/world.json').then(r => r.json()).then(topo => {
   const geoms = topo.objects.countries.geometries;
   features = topojson.feature(topo, topo.objects.countries).features;
   // colour the map so neighbouring countries never share a colour

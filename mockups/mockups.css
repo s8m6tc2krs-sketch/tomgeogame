@@ -1,9 +1,9 @@
-@font-face{font-family:Cinzel;font-weight:600;src:url(fonts/cinzel-latin-600-normal.woff2) format("woff2")}
-@font-face{font-family:Cinzel;font-weight:700;src:url(fonts/cinzel-latin-700-normal.woff2) format("woff2")}
-@font-face{font-family:Cinzel;font-weight:900;src:url(fonts/cinzel-latin-900-normal.woff2) format("woff2")}
-@font-face{font-family:Nunito;font-weight:400;src:url(fonts/nunito-latin-400-normal.woff2) format("woff2")}
-@font-face{font-family:Nunito;font-weight:600;src:url(fonts/nunito-latin-600-normal.woff2) format("woff2")}
-@font-face{font-family:Nunito;font-weight:800;src:url(fonts/nunito-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:Cinzel;font-weight:600;src:url(../fonts/cinzel-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Cinzel;font-weight:700;src:url(../fonts/cinzel-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Cinzel;font-weight:900;src:url(../fonts/cinzel-latin-900-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:400;src:url(../fonts/nunito-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:600;src:url(../fonts/nunito-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:800;src:url(../fonts/nunito-latin-800-normal.woff2) format("woff2")}
 :root{--abyss:#030f1b;--deep:#061b2d;--navy:#0b2a45;--sea:#0f4566;--sea2:#14628a;--foam:#cdeeff;--gold:#e8b54d;--gold2:#ffd77a;--gold-dk:#9c6a17;
   --parch:#f2e2bd;--parch2:#e3c98f;--ink:#2e1f0f;--wood:#5b3a21;--wood2:#3c2513;--red:#d2493f;--green:#43b36f;--muted:#8fb3cc;--land:#2f5d4f;--land2:#3f7563}
 *{box-sizing:border-box}

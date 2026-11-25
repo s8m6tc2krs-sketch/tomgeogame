@@ -1,9 +1,11 @@
 {
   "name": "tomgeogame",
   "private": true,
-  "description": "Tom's GeoGame - a geography quiz for the browser",
+  "type": "module",
+  "description": "Master of the Continents - a geography voyage for the browser",
   "scripts": {
     "build-data": "node tools/build-data.mjs",
+    "build-motc": "node tools/build-motc.mjs",
     "start": "npx serve -l 8080 ."
   },
   "devDependencies": {
@@ -11,6 +13,8 @@
     "d3": "^7.9.0",
     "i18n-iso-countries": "^7.13.0",
     "topojson-client": "^3.1.0",
+    "topojson-server": "^3.0.1",
+    "topojson-simplify": "^3.0.3",
     "world-atlas": "^2.0.2"
   }
 }
