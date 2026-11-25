@@ -68,7 +68,7 @@ body{margin:0;background:#1a1f26;font-family:Nunito,system-ui,sans-serif;color:#
 .title-wrap .k{font-family:Cinzel;color:var(--muted);letter-spacing:6px;font-size:15px}
 .title-wrap h2{font-family:Cinzel;font-weight:900;font-size:66px;line-height:1;margin:10px 0 0;background:linear-gradient(#fff4cf,#e8b54d 60%,#a8701c);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
 .title-wrap h2 small{display:block;font-size:30px;letter-spacing:8px;margin-bottom:6px}
-.galleon{position:absolute;left:292px;top:318px;width:440px;animation:bob 5s ease-in-out infinite}
+.galleon{position:absolute;left:262px;top:292px;width:500px;animation:bob 5s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(6px) rotate(-1deg)}}
 .title-cta{position:absolute;left:0;right:0;bottom:30px;text-align:center;z-index:3}
 .title-cta p{color:var(--muted);margin:14px 0 0;font-size:15px}
